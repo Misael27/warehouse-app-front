@@ -1,0 +1,18 @@
+<h4 mat-dialog-title>Crear Rack</h4>
+
+<mat-dialog-content>
+  <form [formGroup]="rackForm">
+    <mat-form-field>
+      <mat-label>Tipo</mat-label>
+      <mat-select matNativeControl formControlName="type">
+        <mat-option value="A">A</mat-option>
+        <mat-option value="B">B</mat-option>
+        <mat-option value="C">C</mat-option>
+        <mat-option value="D">D</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="button-row">
+      <button mat-flat-button (click)="onSubmit()">Crear</button>
+    </div>
+  </form>
+</mat-dialog-content>

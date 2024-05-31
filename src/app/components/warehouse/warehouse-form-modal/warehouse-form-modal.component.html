@@ -1,0 +1,24 @@
+<h4 mat-dialog-title>Crear Almacén</h4>
+
+<mat-dialog-content>
+  <form [formGroup]="warehouseForm">
+    <mat-form-field>
+      <mat-label>Cliente</mat-label>
+      <input matInput placeholder="Cliente" formControlName="client">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tipo</mat-label>
+      <mat-select matNativeControl formControlName="family">
+        <mat-option value="EST">EST</mat-option>
+        <mat-option value="ROB">ROB</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tamaño</mat-label>
+      <input matInput placeholder="3" formControlName="size" type="number" min="1">
+    </mat-form-field>
+    <div class="button-row">
+      <button mat-flat-button (click)="onSubmit()">Crear</button>
+    </div>
+  </form>
+</mat-dialog-content>

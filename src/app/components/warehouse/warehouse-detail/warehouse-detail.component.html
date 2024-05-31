@@ -1,0 +1,54 @@
+<h4>Detail</h4>
+<mat-grid-list cols="4">
+  <mat-grid-tile
+    [colspan]="2">
+
+    <form [formGroup]="warehouseForm">
+      <mat-form-field>
+        <mat-label>Almacén</mat-label>
+        <input matInput formControlName="id" [hidden]="true">
+        <span class="form-element-non-edit">{{ warehouseForm.get('id')?.value }}</span>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Cliente</mat-label>
+        <input matInput placeholder="Cliente" formControlName="client" [hidden]="!isEdit">
+        <ng-container *ngIf="!isEdit">
+          <span class="form-element-non-edit">{{ warehouseForm.get('client')?.value }}</span>
+        </ng-container>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Tipo</mat-label>
+        <mat-select formControlName="family" *ngIf="isEdit">
+          <mat-option value="EST">EST</mat-option>
+          <mat-option value="ROB">ROB</mat-option>
+        </mat-select>
+        <ng-container *ngIf="!isEdit">
+          <input matInput formControlName="family" [hidden]="!isEdit">
+          <span class="form-element-non-edit">{{ warehouseForm.get('family')?.value }}</span>
+        </ng-container>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Tamaño</mat-label>
+        <input matInput placeholder="3" formControlName="size" type="number" min="1" [hidden]="!isEdit">
+        <ng-container *ngIf="!isEdit">
+          <span class="form-element-non-edit">{{ warehouseForm.get('size')?.value }}</span>
+        </ng-container>
+      </mat-form-field>
+      <div class="button-row" *ngIf="isEdit">
+        <button mat-flat-button (click)="onSubmit()">Guardar</button>
+      </div>
+    </form>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile
+    [colspan]="2">
+    <app-rack-list [warehouseId]="warehouse.id" [racks]="warehouse.rackList" (onNewRack)="getData()"></app-rack-list>
+  </mat-grid-tile>
+
+  <mat-grid-tile
+    [colspan]="4">
+    <p>Permutaciones de instalaciones: </p>
+    <p>{{ permutations.join(', ') }}</p>
+  </mat-grid-tile>
+</mat-grid-list>

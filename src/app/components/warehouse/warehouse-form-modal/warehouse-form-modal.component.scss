@@ -1,0 +1,12 @@
+.button-row {
+  text-align: center;
+}
+
+mat-dialog-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  margin-bottom: 1rem;
+}
